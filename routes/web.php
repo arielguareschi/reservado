@@ -23,4 +23,9 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/tipo', [TiposController::class, 'listar']);
-Route::get('/tipo/{tipo_id}', [TiposController::class, 'buscar']);
+Route::get('/tipo/create', [TiposController::class, 'create'])->name('tipo.create');
+Route::get('/tipo/{tipo_id}', [TiposController::class, 'show'])->name('tipo.show');
+Route::post('/tipo', [TiposController::class, 'store']);
+Route::patch('/tipo/{tipo_id}', [TiposController::class, 'update']);
+Route::delete('/tipo/{tipo_id}', [TiposController::class, 'deletar']);
+

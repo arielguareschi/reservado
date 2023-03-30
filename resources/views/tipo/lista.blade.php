@@ -12,6 +12,11 @@
                         </a>
                     </div>
                     <div class="card-body">
+                        @if(Session::has('mensagem_sucesso'))
+                            <div class="alert alert-success">
+                                {{ Session::get('mensagem_sucesso') }}
+                            </div>
+                        @endif
                         <table class="table table-sm table-hover table-bordered">
                             <thead>
                                 <tr>
@@ -21,7 +26,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($tipos as $tipo)
+                                @forelse ($tipos as $tipo)
                                     <tr>
                                         <td>{{ $tipo->id }}</td>
                                         <td>{{ $tipo->titulo }}</td>
@@ -30,13 +35,17 @@
                                                 Editar
                                             </a>
                                             {!! Form::open(['method' => 'DELETE', 'url' => 'tipo/' . $tipo->id, 'style' => 'display:inline']) !!}
-                                            <button type="submit" class="btn btn-danger btn-sm">
-                                                Excluir
-                                            </button>
+                                            <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
                                             {!! Form::close() !!}
                                         </td>
                                     </tr>
-                                @endforeach
+                                @empty
+                                    <tr>
+                                        <td colspan="3">
+                                            Não há itens para listar!
+                                        </td>
+                                    </tr>
+                                @endforelse
                             </tbody>
                         </table>
                         <div class="pagination justify-content-center">
