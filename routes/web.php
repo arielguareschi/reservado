@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\EquipamentosController;
+use App\Http\Controllers\LocaisController;
 use App\Http\Controllers\TiposController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -22,6 +24,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Route::get('/tipo', [TiposController::class, 'listar']);
 Route::get('/tipo/create', [TiposController::class, 'create'])->name('tipo.create');
 Route::get('/tipo/{tipo_id}', [TiposController::class, 'show'])->name('tipo.show');
@@ -29,3 +32,5 @@ Route::post('/tipo', [TiposController::class, 'store']);
 Route::patch('/tipo/{tipo_id}', [TiposController::class, 'update']);
 Route::delete('/tipo/{tipo_id}', [TiposController::class, 'deletar']);
 
+Route::resource('local', LocaisController::class);
+Route::resource('equipamento', EquipamentosController::class);

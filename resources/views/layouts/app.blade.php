@@ -34,6 +34,14 @@
                             <li class="nav-item">
                                 <a href="{{ url('tipo') }}" class="nav-link">Tipos</a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{ url('local') }}" class="nav-link">Locais</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ url('equipamento') }}" class="nav-link">
+                                    Equipamentos
+                                </a>
+                            </li>
                         @endauth
                     </ul>
 
