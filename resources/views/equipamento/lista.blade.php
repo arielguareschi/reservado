@@ -6,9 +6,9 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        Lista de Local
-                        <a href="{{ url('local/create') }}" class="btn btn-success btn-sm float-end">
-                            Novo Local
+                        Lista de Equipamento
+                        <a href="{{ url('equipamento/create') }}" class="btn btn-success btn-sm float-end">
+                            Novo Equipamento
                         </a>
                     </div>
                     <div class="card-body">
@@ -22,19 +22,23 @@
                                 <tr>
                                     <th>Código</th>
                                     <th>Nome</th>
+                                    <th>Tipo</th>
+                                    <th>Data Aquisição</th>
                                     <th>Opções</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($locais as $local)
+                                @forelse ($equipamentos as $equipamento)
                                     <tr>
-                                        <td>{{ $local->id }}</td>
-                                        <td>{{ $local->nome }}</td>
+                                        <td>{{ $equipamento->id }}</td>
+                                        <td>{{ $equipamento->nome }}</td>
+                                        <td>{{ $equipamento->tipo->titulo }}</td>
+                                        <td>{{ $equipamento->data_aquisicao }}</td>
                                         <td>
-                                            <a href="{{ url('local/' . $local->id) }}" class="btn btn-primary btn-sm">
+                                            <a href="{{ url('equipamento/' . $equipamento->id) }}" class="btn btn-primary btn-sm">
                                                 Editar
                                             </a>
-                                            {!! Form::open(['method' => 'DELETE', 'url' => 'local/' . $local->id, 'style' => 'display:inline']) !!}
+                                            {!! Form::open(['method' => 'DELETE', 'url' => 'equipamento/' . $equipamento->id, 'style' => 'display:inline']) !!}
                                             <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
                                             {!! Form::close() !!}
                                         </td>
@@ -49,7 +53,7 @@
                             </tbody>
                         </table>
                         <div class="pagination justify-content-center">
-                            {{ $locais->links() }}
+                            {{ $equipamentos->links() }}
                         </div>
                     </div>
                 </div>
