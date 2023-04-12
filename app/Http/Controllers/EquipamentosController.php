@@ -99,7 +99,7 @@ class EquipamentosController extends Controller
             $tipo = 'mensagem_sucesso';
             $msg = "Equipamento removido! ";
         } else {
-            $tipo = 'mensagem_erro';
+            $tipo = 'mensagem_erro x';
             $msg = 'Deu erro';
         }
         return Redirect::to('equipamento')->with($tipo, $msg);
